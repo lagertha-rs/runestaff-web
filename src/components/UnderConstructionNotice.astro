@@ -4,12 +4,13 @@ interface Props {
 }
 const { title = "🚧 Under Construction" } = Astro.props;
 ---
+
 <div class="notice">
   <h2>{title}</h2>
   <slot>
-    This website and the Rune language are actively being developed. I
-    don't know why are you here, but it is published right now only to
-    add links to my assembler with error references.
+    This website and the Runestaff language are actively being developed. I
+    don't know why are you here, but it is published right now only to add links
+    to my assembler with error references.
   </slot>
 </div>
 

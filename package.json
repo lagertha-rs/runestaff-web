@@ -1,5 +1,5 @@
 {
-	"name": "rune-web",
+	"name": "runestaff-web",
 	"description": "Build a personal website, blog, or portfolio with Astro.",
 	"dependencies": {
 		"@astrojs/cloudflare": "12.6.12",

@@ -14,7 +14,7 @@ export default defineConfig({
 	session: { driver: "cookie" },
 	integrations: [
 		starlight({
-			title: "rune",
+			title: "runestaff",
 			description: "Java-assembly language for Lagertha VM",
 			plugins: [
 				catppuccin({
@@ -28,7 +28,7 @@ export default defineConfig({
 						// Add rune language as alias of asm
 						{
 							...asmGrammar[0],
-							name: "rune",
+							name: "rns",
 						},
 					],
 				},
