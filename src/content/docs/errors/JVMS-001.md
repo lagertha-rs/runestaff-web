@@ -6,7 +6,7 @@ severity: "jvm_spec"
 ---
 
 **Severity**: JVM Specification Warning  
-**JVM Spec Reference**: [Section 4.1, Table 4.1-B](https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-4.html#jvms-4.1-200-E.1)
+**JVM Spec Reference**: <a href="https://docs.oracle.com/javase/specs/jvms/se25/html/jvms-4.html#jvms-4.1-200-E.1" target="_blank" rel="noopener noreferrer">Section 4.1, Table 4.1-B</a>
 
 ### Description
 

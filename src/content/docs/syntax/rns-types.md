@@ -68,7 +68,9 @@ ldc "line one\nline two"
 ldc "she said \"hi\""
 ```
 
-String literals are encoded as `CONSTANT_Utf8` entries in the constant pool.
+String literals are encoded as `CONSTANT_String` entries in the constant pool.
+
+> Note: Multi-line string literals are not currently supported, it should be written as a single line.
 
 ---
 
