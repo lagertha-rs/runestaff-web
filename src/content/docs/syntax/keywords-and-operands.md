@@ -37,17 +37,28 @@ This applies to **any** keyword: its meaning is determined entirely by where it 
 
 Directives always start with a dot (`.`) and declare structural elements: classes, methods, fields, and so on. They consume operands of the types described in the [Operands](#operands) section below.
 
-See the [Directives](./directives/) page for the full list.
+See the [Directives](/syntax/directives/) page for the full list.
 
 ---
 
 ### Access flags
 
-Access flags control the visibility and behaviour of classes, methods, and fields. Common examples: `public`, `private`, `protected`, `static`, `final`, `abstract`.
+Access flags control the visibility and behaviour of classes, methods, and fields. Common examples: `public`, `private`, `protected`, `static`, `final`, `abstract`. Access flag is optionally present and should be placed right after the directive keyword (TODO: examples on methods and fields).:
 
 ```rns
-.class public MyClass
+.class public final MyClass
 ```
+
+#### Order of access flags
+
+I don't enforce a specific order for access flags:
+
+```rns
+.class final public MyClass
+```
+
+TODO: Interfaces, annotations, enums blabla
+TODO: Say about some rules and JVMS warnings
 
 ---
 

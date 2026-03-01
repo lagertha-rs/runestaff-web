@@ -1,4 +1,12 @@
 /*
+  Widen the main content column by ~15% over Starlight's default of 45rem.
+  This gives the table of contents on the right less unused space.
+*/
+:root {
+  --sl-content-width: 49.5rem;
+}
+
+/*
   Extra top margin when a heading directly follows another heading.
   Starlight only adds 1.5em margin when a heading follows a *non-heading*,
   so consecutive headings (e.g. ## then ###) end up visually glued together.
