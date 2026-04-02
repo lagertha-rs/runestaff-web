@@ -43,7 +43,7 @@ export default defineConfig({
 					collapsed: false,
 					items: [
 						{ label: "Overview", link: "/syntax/" },
-						{ label: "Runestaff Types", link: "/syntax/rns-types/" },
+						{ label: "Types and Operands", link: "/syntax/keywords-and-operands/" },
 						{ label: "Directives", link: "/syntax/directives/" },
 						{ label: "Instructions", link: "/syntax/instructions/" },
 					],

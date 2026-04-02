@@ -166,81 +166,81 @@ jvms.sort(sortBySlug);
               const code = doc.id.split("/")[1].toUpperCase();
               return (
                 <li>
-                  <a href={`/errors/${code.toLowerCase()}/`}>
-                    <div class="error-title">{doc.data.title}</div>
-                    <div class="error-description">{doc.data.description}</div>
-                    <div class="meta">
-                      <span>View details →</span>
-                    </div>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        )
-      }
+                    <a href={`/errors/${code}/`}>
+                     <div class="error-title">{doc.data.title}</div>
+                     <div class="error-description">{doc.data.description}</div>
+                     <div class="meta">
+                       <span>View details →</span>
+                     </div>
+                   </a>
+                 </li>
+               );
+             })}
+           </ul>
+         )
+       }
 
-      <hr />
+       <hr />
 
-      <div class="category">
-        <h2>Assembly Warnings (W)</h2>
-        <p>
-          Non-fatal warnings about potential issues, deprecated features, or
-          suggestions for improvement.
-        </p>
-      </div>
-      {
-        warnings.length === 0 ? (
-          <div class="empty-category-notice">
-            <p>
-              No assembly warning pages have been added yet. Warning pages will
-              appear here as they are documented.
-            </p>
-          </div>
-        ) : (
-          <ul class="error-list">
-            {warnings.map((doc) => {
-              const code = doc.id.split("/")[1].toUpperCase();
-              return (
-                <li>
-                  <a href={`/errors/${code.toLowerCase()}/`}>
-                    <div class="error-title">{doc.data.title}</div>
-                    <div class="error-description">{doc.data.description}</div>
-                    <div class="meta">
-                      <span>View details →</span>
-                    </div>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        )
-      }
+       <div class="category">
+         <h2>Assembly Warnings (W)</h2>
+         <p>
+           Non-fatal warnings about potential issues, deprecated features, or
+           suggestions for improvement.
+         </p>
+       </div>
+       {
+         warnings.length === 0 ? (
+           <div class="empty-category-notice">
+             <p>
+               No assembly warning pages have been added yet. Warning pages will
+               appear here as they are documented.
+             </p>
+           </div>
+         ) : (
+           <ul class="error-list">
+             {warnings.map((doc) => {
+               const code = doc.id.split("/")[1].toUpperCase();
+               return (
+                 <li>
+                   <a href={`/errors/${code}/`}>
+                     <div class="error-title">{doc.data.title}</div>
+                     <div class="error-description">{doc.data.description}</div>
+                     <div class="meta">
+                       <span>View details →</span>
+                     </div>
+                   </a>
+                 </li>
+               );
+             })}
+           </ul>
+         )
+       }
 
-      <hr />
+       <hr />
 
-      <div class="category">
-        <h2>JVM Specification Warnings (JVMS)</h2>
-        <p>
-          Warnings about violations of the Java Virtual Machine Specification
-          that may cause portability or compatibility issues.
-        </p>
-      </div>
-      {
-        jvms.length === 0 ? (
-          <div class="empty-category-notice">
-            <p>
-              No JVM specification warning pages have been added yet. JVMS pages
-              will appear here as they are documented.
-            </p>
-          </div>
-        ) : (
-          <ul class="error-list">
-            {jvms.map((doc) => {
-              const code = doc.id.split("/")[1].toUpperCase();
-              return (
-                <li>
-                  <a href={`/errors/${code.toLowerCase()}/`}>
+       <div class="category">
+         <h2>JVM Specification Warnings (JVMS)</h2>
+         <p>
+           Warnings about violations of the Java Virtual Machine Specification
+           that may cause portability or compatibility issues.
+         </p>
+       </div>
+       {
+         jvms.length === 0 ? (
+           <div class="empty-category-notice">
+             <p>
+               No JVM specification warning pages have been added yet. JVMS pages
+               will appear here as they are documented.
+             </p>
+           </div>
+         ) : (
+           <ul class="error-list">
+             {jvms.map((doc) => {
+               const code = doc.id.split("/")[1].toUpperCase();
+               return (
+                 <li>
+                   <a href={`/errors/${code}/`}>
                     <div class="error-title">{doc.data.title}</div>
                     <div class="error-description">{doc.data.description}</div>
                     <div class="meta">

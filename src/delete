@@ -1,0 +1,59 @@
+/home/amyroshn/workspace/projects/lagertha-vm/rns/src/parser/mod.rs
+
+my java assembly language has 2 ways to specify the cp entry type:
+
+- explicit:
+This one uses the mention of "type hint" that starts with '@' and represents the type of the cp entry.
+  .super @class java/lang/Object
+  .super @utf8 java/lang/Object ; this violates the spec but we can do it, this is the whole point, we can do whatever we want to test jvms
+- implicit:
+  .super java/lang/Object ; this is the standard way, we know super is always a class, so we can infer the type
+
+But in the implicit we use also type hint under the hood.
+rns/src/token/type_hint.rs:327 pub enum TypeHint {
+it had only few variants with Option<Span> but not almost all of them are Option. span here is the span of the "type hint token" and it is Option because we don't have it in the implicit case.
+
+Until now I used only this fn:
+
+ fn parse_operand_or_type_hint<F>(
+        &mut self,
+        err_ctx: OperandErrPosContext,
+        infer_hint: F,
+    ) -> Result<TypeHint, Diagnostic>
+    where
+        F: FnOnce(Spanned<String>) -> TypeHint,
+    {
+
+as before I parsed only one token of implicit type hint, it worked fine, but now I implement instructions, and it has more than one token, for example:
+
+        invokespecial java/lang/Object <init> ()V
+
+And it is called here (I'm in the middle of rewriting the method parsing, it is commented out bcs it has a lot of complilation errors and I don't want you to uncomment it or be confused by lsp):
+
+fn parse_instruction(&mut self) -> Result<RnsInstruction, Diagnostic> {
+        /*
+        let raw_instruction = self.parse_identifier(
+            OperandErrPosContext::InstructionName
+        )?;
+        let instruction_spec = *INSTRUCTION_SPECS
+            .get(raw_instruction.value.as_str())
+            .ok_or_else(|| { todo!() })?;
+        match instruction_spec.operand {
+            InstructionOperand::None => {}
+            InstructionOperand::MethodRef => {
+
+parse_operand_or_type_hint under the hood uses fn resolve_type_hint(&mut self, th: Spanned<TypeHintKind>) -> Result<TypeHint, Diagnostic>
+
+InstructionOperand::MethodRef is returned from IntructionSpec, and I need to call the modified fn parse_operand_or_type_hint<F>( that should be able to parse multiple tokens for the method reference, and it should be able to handle both explicit and implicit type hints.
+
+one operand implicit case we handle like:
+
+self
+            .parse_operand_or_type_hint(OperandErrPosContext::MethodName, |spanned| {
+                TypeHint::Utf8(None, spanned)
+            })
+
+
+Other challange for implicit cases we need probably a separate error type, that take TypeHintKind and some context (probably even OperandErrPosContext with new variant that take InstructionSpec) and will say that here in super/invoke* context the explicit type hint isn't provided so we are assuming it is of type X blablabla
+
+Ask question if you are not sure somewhere or don't understand something, I want to make sure we are on the same page before I start implementing it.

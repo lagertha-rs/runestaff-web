@@ -21,7 +21,7 @@ jvms.sort(sortBySlug);
       <ul>
         {errors.slice(0, 5).map(doc => {
           const code = doc.id.split('/')[1].toUpperCase();
-          return <li><a href={`/errors/${code.toLowerCase()}/`}>{code}</a></li>;
+          return <li><a href={`/errors/${code}/`}>{code}</a></li>;
         })}
         {errors.length > 5 && <li>…and {errors.length - 5} more</li>}
       </ul>
@@ -31,7 +31,7 @@ jvms.sort(sortBySlug);
       <ul>
         {warnings.slice(0, 5).map(doc => {
           const code = doc.id.split('/')[1].toUpperCase();
-          return <li><a href={`/errors/${code.toLowerCase()}/`}>{code}</a></li>;
+          return <li><a href={`/errors/${code}/`}>{code}</a></li>;
         })}
         {warnings.length > 5 && <li>…and {warnings.length - 5} more</li>}
       </ul>
@@ -41,7 +41,7 @@ jvms.sort(sortBySlug);
       <ul>
         {jvms.slice(0, 5).map(doc => {
           const code = doc.id.split('/')[1].toUpperCase();
-          return <li><a href={`/errors/${code.toLowerCase()}/`}>{code}</a></li>;
+          return <li><a href={`/errors/${code}/`}>{code}</a></li>;
         })}
         {jvms.length > 5 && <li>…and {jvms.length - 5} more</li>}
       </ul>

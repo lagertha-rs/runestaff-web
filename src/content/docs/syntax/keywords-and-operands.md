@@ -119,14 +119,9 @@ The following escape sequences are supported inside `#"..."`:
 
 ### Integers
 
-Integers are supported in two representations:
+Integers are supported only in decimal form for now. Hexadecimal and binary literals are not yet supported.
 
-| Representation | Examples |
-|---|---|
-| Decimal | `42`, `-7`, `0` |
-| Hexadecimal | `0x2A`, `-0x7`, `0x0` |
-
-A token starting with a digit or `-` is parsed as an integer literal and encoded as a `CONSTANT_Integer` in the constant pool.
+As JVM supports only 32-bit integers, the valid range is from `-2147483648` to `2147483647`. Values outside this range will cause an error.
 
 ---
 
@@ -159,15 +154,15 @@ By default, Runestaff infers the constant pool type from context. However, since
 Type hints let you do exactly that. The syntax is:
 
 ```
-@type (components...)
+@type components...
 ```
 
-Where `type` is the constant pool type name and the parentheses contain the **space-separated components** of that constant pool entry.
+Where `type` is the constant pool type name followed by the **space-separated components** of that constant pool entry.
 
 For example, to force a superclass reference to point to a `CONSTANT_Methodref` instead of a `CONSTANT_Class`:
 
 ```rns
-.super @methodref (java/lang/Object toString ()Ljava/lang/String;)
+.super @methodref java/lang/Object toString ()Ljava/lang/String;
 ; Forces the operand to a method reference, regardless of what .super normally expects
 ```
 
@@ -175,9 +170,9 @@ Supported type hints:
 
 | Type hint | Constant pool entry | Components | Example |
 |---|---|---|---|
-| `@utf8` | `CONSTANT_Utf8` | Identifier | `@utf8 (MyClass.class)` |
-| `@int` | `CONSTANT_Integer` | Decimal or hex integer | `@int (42)` |
-| `@string` | `CONSTANT_String` | String literal | `@string ("Hello, World!")` |
-| `@class` | `CONSTANT_Class` | Class name identifier | `@class (java/lang/Object)` |
-| `@methodref` | `CONSTANT_Methodref` | ClassName MethodName Descriptor | `@methodref (java/lang/Object toString ()Ljava/lang/String;)` |
+| `@utf8` | `CONSTANT_Utf8` | Identifier | `@utf8 MyClass.class` |
+| `@int` | `CONSTANT_Integer` | Decimal or hex integer | `@int 42` |
+| `@string` | `CONSTANT_String` | String literal | `@string "Hello, World!"` |
+| `@class` | `CONSTANT_Class` | Class name identifier | `@class java/lang/Object` |
+| `@methodref` | `CONSTANT_Methodref` | ClassName MethodName Descriptor | `@methodref java/lang/Object toString ()Ljava/lang/String;` |
 | todo | ... | ... | ... |

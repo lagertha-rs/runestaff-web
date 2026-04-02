@@ -16,13 +16,13 @@ This section covers the syntax of the Runestaff assembly language.
 
 | Page | Description |
 |---|---|
-| [Runestaff Types](./rns-types/) | Primitive types, reference types, arrays, and JVM type descriptors |
+| [Runestaff Types](./keywords-and-operands/) | Primitive types, reference types, arrays, and JVM type descriptors |
 | [Directives](./directives/) | Assembler directives — `.class`, `.method`, `.field`, `.end`, etc. |
 | [Instructions](./instructions/) | JVM instruction mnemonics supported by Runestaff |
 
 ## Basic Structure
 
-A Runestaff source file is made up of a **class declaration** followed by **member declarations** (fields and methods).
+A Runestaff source file is made up of a **class definition** followed by **member definition** (fields and methods).
 
 TODO
 
